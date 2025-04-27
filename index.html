@@ -1,7 +1,357 @@
-海内收银通
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>海内收银通 - 专业的商户收银解决方案</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .navbar {
+            background: #2c3e50;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-item {
+            position: relative;
+            margin-left: 2rem;
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+        }
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            display: none;
+        }
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+        .dropdown-item {
+            padding: 0.5rem 1rem;
+            color: #333;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-item:hover {
+            background: #f8f9fa;
+        }
+        .main-content {
+            margin-top: 80px;
+            padding: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            flex: 1 0 auto;
+        }
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .feature {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+        .feature h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        .cta-section {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 1rem;
+            transition: background 0.3s;
+        }
+        .cta-button:hover {
+            background: #2980b9;
+        }
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            margin-top: auto;
+            width: 100%;
+        }
 
-商户端
-https://mch.shouyintong.com
-https://mch.test.shouyintong.com
+        /* 移动端样式 */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #2c3e50;
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-item {
+                margin: 0;
+                width: 100%;
+            }
+
+            .nav-link {
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .dropdown {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                background: rgba(0,0,0,0.1);
+                display: none;
+            }
+
+            .nav-item:hover .dropdown {
+                display: none;
+            }
+
+            .nav-item.active .dropdown {
+                display: block;
+            }
+
+            .dropdown-item {
+                padding: 0.8rem 2rem;
+                color: white;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                margin: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+
+            .feature {
+                margin-bottom: 1rem;
+            }
+
+            .cta-section {
+                padding: 0 1rem;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 1rem 0;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">海内收银通</a>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">产品服务</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item">收银系统</a>
+                        <a href="#" class="dropdown-item">支付解决方案</a>
+                        <a href="#" class="dropdown-item">数据分析</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">解决方案</a>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-item">零售行业</a>
+                        <a href="#" class="dropdown-item">餐饮行业</a>
+                        <a href="#" class="dropdown-item">服务行业</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">关于我们</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <section class="hero">
+            <h1>专业的商户收银解决方案</h1>
+            <p>安全、便捷、高效的智能收银系统，助力商户数字化转型</p>
+        </section>
+
+        <div class="features">
+            <div class="feature">
+                <h3>安全可靠</h3>
+                <p>采用先进的加密技术，确保交易数据安全，保护商户和消费者的资金安全。通过多重安全认证，为您的每一笔交易保驾护航。</p>
+            </div>
+            <div class="feature">
+                <h3>便捷操作</h3>
+                <p>简洁直观的操作界面，让收银变得简单高效。支持多种支付方式，一键完成交易，大幅提升收银效率。</p>
+            </div>
+            <div class="feature">
+                <h3>数据分析</h3>
+                <p>提供详细的交易数据分析和报表功能，帮助商户更好地了解经营状况。通过数据洞察，优化经营决策。</p>
+            </div>
+        </div>
+
+        <section class="cta-section">
+            <h2>立即体验海内收银通</h2>
+            <p>选择适合您的环境开始使用</p>
+            <div>
+                <a href="https://mch.shouyintong.com" class="cta-button">正式环境</a>
+                <a href="https://mch.test.shouyintong.com" class="cta-button">测试环境</a>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>© 2024 海内收银通 版权所有</p>
+    </footer>
+
+    <script>
+        // 移动端菜单交互
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // 点击菜单项时关闭菜单
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        if (this.querySelector('.dropdown')) {
+                            e.preventDefault();
+                            this.classList.toggle('active');
+                        } else {
+                            navLinks.classList.remove('active');
+                        }
+                    }
+                });
+            });
+
+            // 点击页面其他地方关闭菜单
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.navbar') && window.innerWidth <= 768) {
+                    navLinks.classList.remove('active');
+                    navItems.forEach(item => item.classList.remove('active'));
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
 
 
