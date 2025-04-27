@@ -161,6 +161,39 @@
             padding: 0.5rem;
         }
 
+        /* 友情链接样式 */
+        .friend-links {
+            background: #f8f9fa;
+            padding: 2rem 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        .friend-links-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .friend-links h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .friend-links-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+        .friend-link {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .friend-link:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
@@ -246,6 +279,19 @@
             .main-content {
                 padding: 1rem;
             }
+
+            .friend-links {
+                padding: 1.5rem 0;
+            }
+            .friend-links-list {
+                gap: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            .friend-link {
+                display: block;
+                padding: 0.5rem 0;
+            }
         }
     </style>
 </head>
@@ -312,8 +358,22 @@
         </section>
     </div>
 
+    <div class="friend-links">
+        <div class="friend-links-container">
+            <h3>友情链接</h3>
+            <div class="friend-links-list">
+                <a href="https://www.sunmi.com" class="friend-link" target="_blank">商米收银</a>
+                <a href="https://www.keruyun.com" class="friend-link" target="_blank">客如云收银</a>
+                <a href="https://www.huifu.com" class="friend-link" target="_blank">汇付天下</a>
+                <a href="https://www.lakala.com" class="friend-link" target="_blank">拉卡拉</a>
+                <a href="https://www.shouyin.com" class="friend-link" target="_blank">收银宝</a>
+                <a href="https://www.hainei.com" class="friend-link" target="_blank">海内快付</a>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
-        <p>© 2024 海内收银通 版权所有</p>
+        <p>© 2025 海内收银通 版权所有</p>
     </footer>
 
     <script>
